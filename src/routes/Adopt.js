@@ -42,6 +42,14 @@ export class Adopt extends Component {
     return (
       <div>
         <h2>Cats</h2>
+        <div className='landing-content'>
+          <img src='http://via.placeholder.com/300x300?text=Doggy&font=lobster' alt='Coming Soon'/>
+          <h2>Name</h2>
+          <p>Gender:</p>
+          <p>Age:</p>
+          <p>Breed:</p>
+          <p>Name's Story:</p>
+        </div>
          {catCard}
         <h2>Dogs</h2>
         <div className='landing-content'>

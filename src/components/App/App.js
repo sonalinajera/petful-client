@@ -3,7 +3,8 @@ import { Switch, Route, Link } from 'react-router-dom';
 import Adopt from '../../routes/Adopt'
 import LandingPage from '../../routes/LandingPage';
 import AboutPetfulPage from '../../routes/AboutPetfulPage';
-//import WhyAdopt from '../../routes/WhyAdopt';
+import WhyAdopt from '../../routes/WhyAdopt';
+import SuccessStories from '../../routes/SuccessStories';
 
 function App() {
   return <div>
@@ -24,15 +25,20 @@ function App() {
         path={'/about'}
         component={AboutPetfulPage}
       />
-      {/* <Route
+      <Route
         exact
         path={'/why-adopt'}
         component={WhyAdopt}
-      /> */}
+      />
       <Route
         exact
         path={'/adopt'}
         component={Adopt}  
+      />
+       <Route
+        exact
+        path={'/success'}
+        component={SuccessStories}  
       />
     </Switch>
   </div>
