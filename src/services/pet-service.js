@@ -4,7 +4,7 @@ const PetService = {
   
   },
   getAllCats() {
-    return fetch(`${config.REACT_APP_API_BASE}/pets/cats`)
+    return fetch(`${config.REACT_APP_API_BASE}/pets`)
       .then(res => 
         (!res.ok)
         ? res.json().then(e => Promise.reject(e))
@@ -12,7 +12,7 @@ const PetService = {
         )
   },
   getAllDogs() {
-    return fetch(`${config.REACT_APP_API_BASE}/pets/dogs`)
+    return fetch(`${config.REACT_APP_API_BASE}/pets`)
       .then(res => 
         (!res.ok)
         ? res.json().then(e => Promise.reject(e))

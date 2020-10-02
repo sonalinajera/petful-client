@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css';
 
-export default class WhyAdopt extends Component {
+export default class SuccessfulStories extends Component {
   render(){
     
     return(
