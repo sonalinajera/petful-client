@@ -1,0 +1,13 @@
+.description {
+    background-image: linear-gradient(to right, lightgreen, lightblue,lightgreen );
+    text-align: justify;
+    margin-top: 0px;
+    border-radius: 4px;
+
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

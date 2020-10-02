@@ -1,6 +1,7 @@
 body {
   text-align: center;
   padding-bottom: 40px;
+  background-image: linear-gradient(to left,purple, lightpink,purple);
 }
 
 .hero {
@@ -11,6 +12,7 @@ body {
   text-align: center;
   background-color: #f1f1f1;
   width: 80%;
+  background-image: linear-gradient(to right, lightgreen, lightblue,lightgreen );
 }
 
 .landing-content {
@@ -20,5 +22,6 @@ body {
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
-  width: 75%;
+  width: 80%;
+  background-image: linear-gradient(to right, lightgreen, lightblue,lightgreen );
 }
