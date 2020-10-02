@@ -11,21 +11,18 @@ export class Adopt extends Component {
 
   componentDidMount (){
     // async call
-    PetService.getAllCats()
-    .then(cats => {
-      this.setState({ cats: cats });
-    }).then(
-      PetService.getAllDogs()
-      .then(dogs => {
-        this.setState({dogs});
-      })
-    )
+    PetService.getAllPets()
+    .then(pets => {
+      console.log(pets)
+      this.setState({ cats: pets.cats,
+        dogs: pets.dogs });
+    })
     .catch(e => console.log(e));
   }
 
   render() {
-
-    let catCard = this.state.cats.map(cat => {
+    let cats = this.state.cats? this.state.cats : [];
+    let catCard = cats.map(cat => {
         return (
           <div className='landing-content'>
           <img src={cat.imageURL} alt='Landing Cat'/>
@@ -42,14 +39,7 @@ export class Adopt extends Component {
     return (
       <div>
         <h2>Cats</h2>
-        <div className='landing-content'>
-          <img src='http://via.placeholder.com/300x300?text=Doggy&font=lobster' alt='Coming Soon'/>
-          <h2>Name</h2>
-          <p>Gender:</p>
-          <p>Age:</p>
-          <p>Breed:</p>
-          <p>Name's Story:</p>
-        </div>
+        
          {catCard}
         <h2>Dogs</h2>
         <div className='landing-content'>
