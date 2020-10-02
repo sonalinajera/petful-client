@@ -8,6 +8,7 @@ export class LandingPage extends Component {
         <div className="hero">
           <h2> Hero- About Petful </h2>
           <p>Content</p>
+          <Link to={'/about'}><p>Learn more about Petful</p></Link>
         </div>
         <div className='landing-content'>
           <h2>Why Adopt</h2>

@@ -28,7 +28,7 @@ export class Adopt extends Component {
     let catCard = this.state.cats.map(cat => {
         return (
           <div className='landing-content'>
-          <img></img>
+          <img src='hhttp://via.placeholder.com/300x300?text=Doggy&font=lobster' alt='Landing Cat'/>
           <h2>Name: {cat.name}</h2>
           <p>Gender: {cat.gender}</p>
           <p>Age: {cat.age}</p>
@@ -45,7 +45,7 @@ export class Adopt extends Component {
          {catCard}
         <h2>Dogs</h2>
         <div className='landing-content'>
-          <img></img>
+          <img src='http://via.placeholder.com/300x300?text=Doggy&font=lobster' alt='Coming Soon'/>
           <h2>Name</h2>
           <p>Gender:</p>
           <p>Age:</p>
