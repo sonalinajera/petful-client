@@ -33,7 +33,7 @@ export class Adopt extends Component {
           <p>Gender: {cat.gender}</p>
           <p>Age: {cat.age}</p>
           <p>Breed: {cat.breed}</p>
-          <p>Name's Story: {cat.story}</p>
+          <p>Name's Story: {cat.story} </p>
         </div>
           )
            })
