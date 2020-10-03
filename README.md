@@ -5,7 +5,7 @@ By: Angela Thomas and Sonali Najera
 
 ## Links
 
-Open [live app](https://petful-client-six.vercel.app/about) to view it in the browser.
+Open [live app](https://petful-client-ecru.vercel.app/) to view it in the browser.
 
 Open [api](https://petful-petbuddy.herokuapp.com/) to view it in the browser.
 
