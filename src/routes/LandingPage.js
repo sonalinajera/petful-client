@@ -6,7 +6,7 @@ export class LandingPage extends Component {
     return (
       <div>
         <div className="hero">
-          <h2> Hero- About Petful </h2>
+          <h2>About Petful </h2>
           
           <Link to={'/about'}><p>Learn more about Petful</p></Link>
         </div>
