@@ -5,7 +5,7 @@ import LandingPage from '../../routes/LandingPage';
 import AboutPetfulPage from '../../routes/AboutPetfulPage';
 import WhyAdopt from '../../routes/WhyAdopt';
 import SuccessStories from '../../routes/SuccessStories';
-import HowItWorks from '../../HowItWorks';
+import HowItWorks from '../../routes/HowItWorks';
 
 function App() {
   return <div>
