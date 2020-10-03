@@ -121,6 +121,8 @@ export class Adopt extends Component {
           )
           })
 
+    let people = this.state.people ? this.state.people : [];
+
     return (
       <div>
           <div>
@@ -136,7 +138,7 @@ export class Adopt extends Component {
             <h1>Who's in Line?</h1>
             <ol>
               {/* uncomment when you define people */}
-              {/* {people} */}
+              {{people} }
               </ol>
           </div>
           <form onSubmit={this.onSubmit}>
