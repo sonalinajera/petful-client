@@ -5,6 +5,7 @@ import LandingPage from '../../routes/LandingPage';
 import AboutPetfulPage from '../../routes/AboutPetfulPage';
 import WhyAdopt from '../../routes/WhyAdopt';
 import SuccessStories from '../../routes/SuccessStories';
+import HowItWorks from '../../HowItWorks';
 
 function App() {
   return <div>
@@ -39,6 +40,11 @@ function App() {
         exact
         path={'/success'}
         component={SuccessStories}  
+      />
+        <Route
+        exact
+        path={'/how'}
+        component={HowItWorks}  
       />
     </Switch>
   </div>
