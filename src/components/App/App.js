@@ -2,7 +2,6 @@ import React from 'react'
 import { Switch, Route, Link } from 'react-router-dom';
 import LandingPage from '../../routes/LandingPage'
 import AboutPetfulPage from '../../components/About/AboutPetfulPage'
-import HowItWorks from '../../components/HowItWorks/HowItWorks'
 import Adopt from '../../routes/Adopt'
 import SuccessStories from '../../routes/SuccessStories'
 

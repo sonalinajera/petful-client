@@ -5,14 +5,12 @@ import config from '../config'
 
 
 export class Adopt extends Component {
-  state = {
-    cats: [],
-    dogs: [],
-    people: []
-  }
+
   constructor() {
     super();
     this.state = {
+      cats: [],
+      dogs: [],
       people: [],
       pets: {},
       OK: false,
@@ -27,14 +25,13 @@ export class Adopt extends Component {
       .then(pets => {
         console.log(pets)
         this.setState({
-          cats: pets.cats,
-          dogs: pets.dogs
+          cats: [pets.cat],
+          dogs: [pets.dog]
         });
       })
     PeopleService.getAllPeople()
       .then(people => {
-        console.log(people)
-        this.setState({ people });
+        this.setState({ people: people.people });
       })
       .catch(e => console.log(e));
   }
@@ -92,10 +89,11 @@ export class Adopt extends Component {
   }
 
   render() {
+    console.log('state', this.state)
     let cats = this.state.cats ? this.state.cats : [];
     let catCard = cats.map(cat => {
       return (
-        <div className='landing-content'>
+        <div key='1' className='landing-content'>
           <img src={cat.imageURL} alt='Landing Cat' />
           <h2>Name: {cat.name}</h2>
           <p>Gender: {cat.gender}</p>
@@ -110,42 +108,53 @@ export class Adopt extends Component {
 
     let dogCard = dogs.map(dog => {
       return (
-        <div className='landing-content'>
-          <img src={dog.imageURL} alt='Landing Cat alt='/>
+        <div key='1' className='landing-content'>
+          <img src={dog.imageURL} alt='Landing Cat' />
           <h2>Name: {dog.name}</h2>
           <p>Gender: {dog.gender}</p>
           <p>Age: {dog.age}</p>
           <p>Breed: {dog.breed}</p>
           <p>Name's Story: {dog.story}</p>
-          </div>
-          )
-          })
+        </div>
+      )
+    })
 
+    let people = this.state.people ? this.state.people : [];
+
+    let nextInLine = people.map((people, i) => {
+      return (
+        <div key={i}>
+        <li className='people-list'>{people}</li>
+        </div>
+      )
+    })
 
     return (
       <div>
-          <div>
-            <h1>Look who's up!</h1>
-            <h2>Dogs</h2>
+        <div>
+          <h2>Look who's up!</h2>
+          <h2>Cats</h2>
 
-            {catCard}
-          </div>
-            <h2>Dogs</h2>
-            {dogCard}
-          
-          <div>
-            <h1>Who's in Line?</h1>
-            <ol>
-           </ol>
-          </div>
-          <form onSubmit={this.onSubmit}>
-            <h1>Get in Line</h1>
-            <label htmlFor='full-name'>Enter Your Name</label>
-            <input onChange={(event) => this.setState({ fullName: event.currentTarget.value })} type='text' id='full-name' />
-            <button>Join Queue</button>
-          </form>
-        </div >
-      )
+          {catCard}
+        </div>
+        <h2>Dogs</h2>
+        {dogCard}
+
+        <section>
+          <h2>Who's in line to adopt?</h2>
+          <ol className='landing-content'>
+            {nextInLine}
+          </ol>
+        </section>
+        <form onSubmit={this.onSubmit}>
+          <h1>Get in Line</h1>
+          <label htmlFor='full-name'>Enter Your Name</label>
+          <input onChange={(event) => this.setState({ fullName: event.currentTarget.value })} type='text' id='full-name' />
+          <br/>
+          <button>Join Queue</button>
+        </form>
+      </div >
+    )
   }
 }
 

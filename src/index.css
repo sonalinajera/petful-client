@@ -25,3 +25,12 @@ body {
   width: 80%;
   background-image: linear-gradient(to right, lightgreen, lightblue,lightgreen );
 }
+
+img {
+  max-width: 240px;
+}
+
+.people-list {
+  max-width: 50%;
+  margin: auto;
+}
