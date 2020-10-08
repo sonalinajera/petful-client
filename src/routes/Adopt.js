@@ -23,7 +23,6 @@ export class Adopt extends Component {
     // async call
     PetService.getAllPets()
       .then(pets => {
-        console.log(pets)
         this.setState({
           cats: [pets.cat],
           dogs: [pets.dog]
@@ -33,39 +32,43 @@ export class Adopt extends Component {
       .then(people => {
         this.setState({ people: people.people });
       })
-      .catch(e => console.log(e));
+      .catch(e => console.error(e));
   }
 
 
   petCountdown = () => {
     setInterval(() => {
-      fetch(`${config.API_ENDPOINT}/api/people`, {
+      fetch(`${config.REACT_APP_API_BASE}/people`, {
         method: 'DELETE',
         header: {
           'content-type': 'application/json',
         }
       }).then(() => this.fetchData());
       this.adopted();
-    }, 5000)
+    }, 5000) 
+    
   }
+
   fetchData = () => {
-    fetch(`${config.API_ENDPOINT}/api/pets`)
+    fetch(`${config.REACT_APP_API_BASE}/pets`)
       .then(res => res.json())
-      .then(res => this.setState({ pets: res, OK: true }));
-    fetch(`${config.API_ENDPOINT}/api/people`)
+      .then(res => this.setState({ cats: [res.cat],
+        dogs: [res.dog], pets: res, OK: true }));
+    fetch(`${config.REACT_APP_API_BASE}/people`)
       .then(res => res.json())
-      .then(res => this.setState({ people: res }));
+      .then(res => {
+      this.setState({ people: res.people })});
   }
 
   adopted = () => {
-    fetch(`${config.API_ENDPOINT}/api/pets`, {
+    fetch(`${config.REACT_APP_API_BASE}/pets`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify({ type: 'cats' })
     }).then(() => this.fetchData());
-    fetch(`${config.API_ENDPOINT}/api/pets`, {
+    fetch(`${config.REACT_APP_API_BASE}/pets`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -78,18 +81,24 @@ export class Adopt extends Component {
     event.preventDefault();
     let person = this.state.fullName;
     this.setState({ currentUser: person })
-    fetch(`${config.API_ENDPOINT}/api/people`, {
+    fetch(`${config.REACT_APP_API_BASE}/people`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({ person })
-    }).then(() => this.fetchData());
+    })
+    .then(res => res.json())
+    .then(resJson => {
+       this.setState({
+         people: [...resJson.people]
+       })
+      })
+    .then(() => this.fetchData());
     this.petCountdown();
   }
 
   render() {
-    console.log('state', this.state)
     let cats = this.state.cats ? this.state.cats : [];
     let catCard = cats.map(cat => {
       return (
@@ -99,7 +108,7 @@ export class Adopt extends Component {
           <p>Gender: {cat.gender}</p>
           <p>Age: {cat.age}</p>
           <p>Breed: {cat.breed}</p>
-          <p>Name's Story: {cat.story} </p>
+          <p>{cat.name}'s Story: {cat.story} </p>
         </div>
       )
     })
@@ -109,12 +118,12 @@ export class Adopt extends Component {
     let dogCard = dogs.map(dog => {
       return (
         <div key='1' className='landing-content'>
-          <img src={dog.imageURL} alt='Landing Cat' />
+          <img src={dog.imageURL} alt='Landing dog' />
           <h2>Name: {dog.name}</h2>
           <p>Gender: {dog.gender}</p>
           <p>Age: {dog.age}</p>
           <p>Breed: {dog.breed}</p>
-          <p>Name's Story: {dog.story}</p>
+          <p>{dog.name}'s Story: {dog.story}</p>
         </div>
       )
     })
