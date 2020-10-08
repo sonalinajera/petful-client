@@ -19,6 +19,8 @@ export class Adopt extends Component {
     }
   }
 
+
+
   componentDidMount() {
     // async call
     PetService.getAllPets()
@@ -37,16 +39,49 @@ export class Adopt extends Component {
 
 
   petCountdown = () => {
-    setInterval(() => {
-      fetch(`${config.REACT_APP_API_BASE}/people`, {
-        method: 'DELETE',
-        header: {
-          'content-type': 'application/json',
-        }
-      }).then(() => this.fetchData());
-      this.adopted();
-    }, 5000) 
+    var countdown = setInterval(() => {
+      if(this.state.people.length < 2) {
+        this.addToQueue();
+       return clearInterval(countdown);
+      }
+        fetch(`${config.REACT_APP_API_BASE}/people`, {
+          method: 'DELETE',
+          header: {
+            'content-type': 'application/json',
+          }
+        }).then(() => this.fetchData());
+        this.adopted();
+      }
+      , 5000);
     
+      // if(this.state.people.length < 2) {
+      //   return clearInterval(countdown)
+      // stopInterval()
+    // }
+  }
+
+  addToQueue=() =>  {
+    let randomPeople = [
+      "Lisa NewCarr",
+      'Karen From Finance',
+      'Helen of Troy',
+      'Jake from StateFarm',
+      'Johnny Jon',
+      'Tracy Wells'
+    ];
+
+    let index = Math.floor(Math.random() * randomPeople.length); 
+    let person = randomPeople[index];
+    setInterval(() => { 
+      fetch(`${config.REACT_APP_API_BASE}/people`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ person })
+      })
+      .then(res => res.json()).then(() => this.fetchData());
+    }, 5000) 
   }
 
   fetchData = () => {
@@ -61,20 +96,28 @@ export class Adopt extends Component {
   }
 
   adopted = () => {
-    fetch(`${config.REACT_APP_API_BASE}/pets`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({ type: 'cats' })
-    }).then(() => this.fetchData());
-    fetch(`${config.REACT_APP_API_BASE}/pets`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({ type: 'dogs' })
-    }).then(() => this.fetchData());
+    let counter = this.state.people.length;
+    if (counter === 0 ) {
+      return;
+    }
+    if (counter % 2 === 0) {
+      fetch(`${config.REACT_APP_API_BASE}/pets`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ type: 'cats' })
+      }).then(() => this.fetchData());
+    }
+    else {
+      fetch(`${config.REACT_APP_API_BASE}/pets`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({ type: 'dogs' })
+      }).then(() => this.fetchData());
+    }
   }
 
   onSubmit = (event) => {
