@@ -35,12 +35,10 @@ export default class SuccessfulStories extends Component {
         <br></br>
         <img src='http://placekitten.com/300/300' alt='Cute Cat' />
         <br></br>
+        <p>Find your success story today!</p>
         <div className="buttons">
         <Link to={'/adopt'}>
-          <button type='submit'>Find a Pet</button>
-        </Link>
-        <Link to={'/'}>
-          <button type='submit'>Return to Homepage</button>
+          <button type='submit'>Go to adoption page</button>
         </Link>
         </div>
       </div>      

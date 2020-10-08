@@ -1,19 +1,16 @@
 import React from 'react'
 import { Switch, Route, Link } from 'react-router-dom';
-import Adopt from '../../routes/Adopt'
-import LandingPage from '../../routes/LandingPage';
-import AboutPetfulPage from '../../routes/AboutPetfulPage';
-import WhyAdopt from '../../routes/WhyAdopt';
-import SuccessStories from '../../routes/SuccessStories';
-import HowItWorks from '../../routes/HowItWorks';
+import LandingPage from '../../routes/LandingPage'
+import AboutPetfulPage from '../../components/About/AboutPetfulPage'
+import HowItWorks from '../../components/HowItWorks/HowItWorks'
+import SuccessStories from '../../routes/SuccessStories'
 
 function App() {
   return <div>
     <header>
-    <Link to={'/'}><h1>Petful</h1></Link>
+      <Link to={'/'}><h1>Petful</h1></Link>
     </header>
 
-   
 
     <Switch>
       <Route
@@ -26,25 +23,16 @@ function App() {
         path={'/about'}
         component={AboutPetfulPage}
       />
+
       <Route
-        exact
-        path={'/why-adopt'}
-        component={WhyAdopt}
-      />
-      <Route
-        exact
-        path={'/adopt'}
-        component={Adopt}  
-      />
-       <Route
-        exact
-        path={'/success'}
-        component={SuccessStories}  
-      />
-        <Route
         exact
         path={'/how'}
-        component={HowItWorks}  
+        component={HowItWorks}
+      />
+      <Route
+        exact
+        path={'/success'}
+        component={SuccessStories}
       />
     </Switch>
   </div>

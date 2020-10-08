@@ -19,17 +19,13 @@ export default class AboutPetfulPage extends Component {
                  our precious animals will bring Petful joy to your home!
 
         </section>
-        <br></br>
-        <img src='https://images.pexels.com/photos/923360/pexels-photo-923360.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' alt='Cute Cat' />
+        <br/>
+        <img className='about-Img' 
+          src='https://images.pexels.com/photos/923360/pexels-photo-923360.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' 
+          alt='a cute cat plays with lights'/>
        <div className='buttons'>
-        <Link to={'/why-adopt'}>
-          <button type='submit'>Why Adopt?</button>
-        </Link>
         <Link to={'/adopt'}>
           <button type='submit'>Find a Pet</button>
-        </Link>
-        <Link to={'/'}>
-          <button type='submit'>Return to Homepage</button>
         </Link>
         </div>
       </div>      
