@@ -38,3 +38,8 @@ img {
   max-width: 50%;
   margin: auto;
 }
+
+div {
+  max-width: 600px;
+  margin: auto;
+}

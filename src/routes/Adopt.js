@@ -241,10 +241,14 @@ export class Adopt extends Component {
         </section>
         <form onSubmit={this.onSubmit}>
           <h1>Get in Line</h1>
+          <div className='landing-content'>
           <label htmlFor='full-name'>Enter Your Name</label>
+          <br/>
           <input onChange={(event) => this.setState({ fullName: event.currentTarget.value })} type='text' id='full-name' />
           <br />
+          <br/>
           <button>Join Queue</button>
+          </div>
         </form>
       </div >
     )
